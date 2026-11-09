@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คู่มือการทำพริกน้ำปลา 3 สไตล์ | Phrik Nam Pla Masterclass</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Prompt & Kanit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        prompt: ['Prompt', 'sans-serif'],
+                        kanit: ['Kanit', 'sans-serif'],
+                    },
+                    colors: {
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                        chili: {
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Kanit', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15);
+        }
+        .active-tab {
+            background: linear-gradient(135deg, #d97706 0%, #dc2626 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.4);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(217, 119, 6, 0.5);
+            border-radius: 3px;
+        }
+        .pulse-amber {
+            animation: pulse-glow 3s infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.5); }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100 bg-slate-950 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-950/20 via-slate-950 to-slate-950 custom-scrollbar">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-600 to-chili-600 flex items-center justify-center text-white text-xl shadow-lg shadow-amber-900/40">
+                    <i class="fa-solid fa-pepper-hot"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-amber-400 via-orange-300 to-chili-500 bg-clip-text text-transparent">
+                        Phrik Nam Pla Lab
+                    </h1>
+                    <p class="text-xs text-slate-400">คู่มือเจาะลึกศิลปะการทำพริกน้ำปลาไทย</p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="#recipes" class="hover:text-amber-400 transition-colors">สูตรทั้ง 3 สไตล์</a>
+                <a href="#calculator" class="hover:text-amber-400 transition-colors">คำนวณสัดส่วน</a>
+                <a href="#tips" class="hover:text-amber-400 transition-colors">เคล็ดลับกูรู</a>
+            </nav>
+
+            <button onclick="scrollToSection('recipes')" class="px-4 py-2 text-xs sm:text-sm font-medium bg-amber-600/20 text-amber-300 border border-amber-500/30 rounded-full hover:bg-amber-600/30 transition-all">
+                <i class="fa-solid fa-utensils mr-2"></i>เลือกสูตรเลย
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-12 lg:py-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+                        <i class="fa-solid fa-award text-amber-400"></i>
+                        <span>Culinary Art of Thai Condiments</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                        ถอดรหัสความอร่อย <br/>
+                        <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-red-500 bg-clip-text text-transparent">
+                            พริกน้ำปลาคู่โต๊ะอาหารไทย
+                        </span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+                        เครื่องปรุงเรียบง่ายที่เปลี่ยนอาหารจานธรรมดาให้กลายเป็นมื้อพิเศษ รวมสูตรและเทคนิคการทำพริกน้ำปลาแบบละเอียด 3 สไตล์ ตั้งแต่วิธีป้องกันพริกดำ รสสัมผัสเข้มข้นทรงเครื่อง จนถึงสูตรโขลกโบราณเข้าเนื้อ
+                    </p>
+                    
+                    <!-- Feature Quick Specs -->
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-800/80 max-w-lg">
+                        <div class="text-center p-3 rounded-xl bg-slate-900/50 border border-slate-800">
+                            <span class="block text-xl font-bold text-amber-400">3 สไตล์</span>
+                            <span class="text-xs text-slate-400">คลาสสิก / ทรงเครื่อง / โบราณ</span>
+                        </div>
+                        <div class="text-center p-3 rounded-xl bg-slate-900/50 border border-slate-800">
+                            <span class="block text-xl font-bold text-emerald-400">สด กรอบ</span>
+                            <span class="text-xs text-slate-400">เคล็ดลับพริกไม่หมองดำ</span>
+                        </div>
+                        <div class="text-center p-3 rounded-xl bg-slate-900/50 border border-slate-800">
+                            <span class="block text-xl font-bold text-chili-500">100%</span>
+                            <span class="text-xs text-slate-400">รสชาติกลมกล่อม</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Interactive Cards Preview -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md rounded-2xl overflow-hidden shadow-2xl glass-panel p-2 border border-slate-700/50 pulse-amber">
+                        <div class="relative h-64 sm:h-72 rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=1000&q=80" 
+                                 alt="Thai Chili Fish Sauce Ingredients" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='https://placehold.co/600x400/1e293b/f59e0b?text=Phrik+Nam+Pla'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <span class="px-2.5 py-1 text-xs font-semibold bg-chili-600 text-white rounded-md mb-2 inline-block">เคล็ดลับสำคัญ</span>
+                                <h3 class="text-lg font-bold text-white">เคลือบพริกด้วยมะนาวก่อนเติมน้ำปลา</h3>
+                                <p class="text-xs text-slate-300 mt-1">กรดซิตริกช่วยป้องกันออกซิเดชัน ให้พริกสดใสไม่ดำคล้ำนานหลายวัน</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Recipe Selector Dashboard Section -->
+    <section id="recipes" class="py-12 bg-slate-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-2xl sm:text-4xl font-bold text-white mb-3">เลือกสูตรพริกน้ำปลาที่คุณชื่นชอบ</h2>
+                <p class="text-slate-400 text-sm sm:text-base">คลิกเลือกสไตล์เพื่อดูส่วนผสม เทคนิคเฉพาะตัว และขั้นตอนการทำอย่างละเอียด</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-3 mb-10">
+                <button onclick="switchRecipe(0)" id="tab-btn-0" class="tab-btn active-tab px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-flask text-lg"></i>
+                    <span>1. สูตรคลาสสิก (สด กรอบ ไม่ดำ)</span>
+                </button>
+                <button onclick="switchRecipe(1)" id="tab-btn-1" class="tab-btn glass-card hover:text-amber-400 px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-slate-300 transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-lemon text-lg"></i>
+                    <span>2. สูตรเข้มข้นหอมทรงเครื่อง</span>
+                </button>
+                <button onclick="switchRecipe(2)" id="tab-btn-2" class="tab-btn glass-card hover:text-amber-400 px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-slate-300 transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-[#d97706] fa-mortar-pestle text-lg"></i>
+                    <span>3. สูตรโบราณโขลกละเอียด</span>
+                </button>
+            </div>
+
+            <!-- Recipe Detail Container -->
+            <div id="recipe-display-container" class="grid grid-cols-1 lg:grid-cols-12 gap-8 glass-panel p-6 sm:p-8 rounded-3xl">
+                <!-- Content will be injected dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portion Calculator & Ingredient Checklist Interactive Section -->
+    <section id="calculator" class="py-12 border-t border-b border-slate-800/80 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left: Portion Scaler -->
+                <div class="lg:col-span-5 glass-card p-6 sm:p-8 rounded-2xl border border-slate-800">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 text-lg">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">คำนวณปริมาณเสิร์ฟ</h3>
+                            <p class="text-xs text-slate-400">ปรับจำนวนถ้วย/มื้อที่ต้องการ</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label class="text-sm font-medium text-slate-300 flex justify-between mb-2">
+                                <span>จำนวนถ้วยที่ต้องการทำ:</span>
+                                <span id="portion-count-label" class="text-amber-400 font-bold text-lg">1 ถ้วย</span>
+                            </label>
+                            <input type="range" id="portion-range" min="1" max="10" value="1" step="1" 
+                                   class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-amber-500" 
+                                   oninput="updatePortion(this.value)">
+                            <div class="flex justify-between text-xs text-slate-500 mt-1">
+                                <span>1 ถ้วย (ทานในมื้อ)</span>
+                                <span>5 ถ้วย</span>
+                                <span>10 ถ้วย (จัดเลี้ยง)</span>
+                            </div>
+                        </div>
+
+                        <!-- Scaled Ingredients Overview -->
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">วัตถุดิบปรับตามสัดส่วน (<span id="selected-recipe-name">สูตรคลาสสิก</span>)</h4>
+                            <ul id="scaled-ingredients-list" class="space-y-2 text-sm text-slate-200">
+                                <!-- Dynamic List -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Ingredient Visual Cards -->
+                <div class="lg:col-span-7">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                        <i class="fa-solid fa-pepper-hot text-chili-500 mr-2"></i>
+                        ส่วนประกอบสำคัญ & วิธีเลือกใช้
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="glass-card p-4 rounded-xl flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-slate-800">
+                                <img src="https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?auto=format&fit=crop&w=200&q=80" alt="Chili" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100?text=Chili'">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-100 text-sm">พริกขี้หนูสวน & พริกจินดา</h4>
+                                <p class="text-xs text-slate-400 mt-1">พริกขี้หนูสวนให้ความหอมฉุนและเผ็ดจัด พริกแดงจินดาช่วยเพิ่มสีสันน่ารับประทาน</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-slate-800">
+                                <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=200&q=80" alt="Fish Sauce" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100?text=FishSauce'">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-100 text-sm">น้ำปลาแท้หมักธรรมชาติ</h4>
+                                <p class="text-xs text-slate-400 mt-1">ใช้น้ำปลาเกรดดี สีน้ำตาลทองใส กลิ่นหอมหมัก ไม่เค็มกระด้าง</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-slate-800">
+                                <img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&w=200&q=80" alt="Lime" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100?text=Lime'">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-100 text-sm">น้ำมะนาวคั้นสด</h4>
+                                <p class="text-xs text-slate-400 mt-1">คั้นสดใหม่เท่านั้น หลีกเลี่ยงมะนาวขวด มะนาวช่วยเคลือบพริกไม่ให้ดำ</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-slate-800">
+                                <img src="https://images.unsplash.com/photo-1618255016513-dd62a0a2df39?auto=format&fit=crop&w=200&q=80" alt="Garlic" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100?text=Garlic'">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-100 text-sm">กระเทียมไทยกลีบเล็ก</h4>
+                                <p class="text-xs text-slate-400 mt-1">ให้กลิ่นหอมแรงและเผ็ดปร่าเฉพาะตัว กลมกล่อมเข้ากันได้ดีกับน้ำปลา</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pro Tips & Science Section -->
+    <section id="tips" class="py-12 bg-slate-900/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest block mb-1">Culinary Science & Storage</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">เคล็ดลับกูรูพริกน้ำปลา</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Tip 1 -->
+                <div class="glass-panel p-6 rounded-2xl border-t-4 border-amber-500">
+                    <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">1. ทำไมพริกถึงไม่ดำ?</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        ซอยพริกและกระเทียมแล้ว ให้คลุกกับ <strong>น้ำมะนาว</strong> เป็นอันดับแรก กรดซิตริกในมะนาวจะทำหน้าที่ยับยั้งเอนไซม์ Polyphenol Oxidase ป้องกันปฏิกิริยาออกซิเดชันกับอากาศ ทำให้พริกมีสีสดใสน่ารับประทานตลอดวัน
+                    </p>
+                </div>
+
+                <!-- Tip 2 -->
+                <div class="glass-panel p-6 rounded-2xl border-t-4 border-chili-500">
+                    <div class="w-10 h-10 rounded-lg bg-chili-500/20 text-chili-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-vial"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">2. น้ำอุ่นปรับสมดุล</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        การใส่น้ำอุ่น/น้ำต้มสุกเล็กน้อย (ประมาณ 1 ช้อนชา) ช่วยละลายเกล็ดน้ำตาลทรายได้ดีขึ้น และช่วยลดความเค็มกระด้างของน้ำปลาลง ทำให้รสชาติโดยรวมกลมกล่อม ละมุนลิ้น ไม่เค็มโดด
+                    </p>
+                </div>
+
+                <!-- Tip 3 -->
+                <div class="glass-panel p-6 rounded-2xl border-t-4 border-emerald-500">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-box-tissue"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">3. เทคนิคเก็บไว้ได้นาน</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        ซับวัตถุดิบ (พริก, กระเทียม) ให้แห้งสนิทหลังล้างทำความสะอาด ความชื้นจากน้ำเปล่าเป็นสาเหตุหลักที่ทำให้พริกเน่าเสียเร็ว หากเก็บในภาชนะแก้วปิดฝาเข้าตู้เย็น จะคงความสดสดใหม่ได้ 2-3 วัน
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="mb-2">Phrik Nam Pla Masterclass Dashboard — รังสรรค์เพื่อคนรักอาหารไทย</p>
+            <p>© 2026 Interactive Culinary Guide. Built for maximum clarity and flavor.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Recipes Master Data
+        const recipesData = [
+            {
+                id: 0,
+                title: "พริกน้ำปลาสูตรคลาสสิก",
+                subtitle: "สด กรอบ กลมกล่อม ไม่ดำหมอง",
+                description: "สูตรมาตรฐานตามร้านอาหาร ชูรสเค็มอมหวานกลมกล่อม พริกและกระเทียมสีสวยสดใส ไม่ดำหมองแม้ทิ้งไว้นาน",
+                image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80",
+                prepTime: "5 นาที",
+                tasteProfile: "เค็มนำ เปรี้ยวตาม หวานปลายกลมกล่อม",
+                ingredients: [
+                    { name: "พริกขี้หนูสวน (เขียว-แดงผสม)", amount: 18, unit: "เม็ด", icon: "fa-pepper-hot" },
+                    { name: "กระเทียมไทย (กลีบเล็ก)", amount: 11, unit: "กลีบ", icon: "fa-seedling" },
+                    { name: "น้ำปลาแท้เกรดดี", amount: 4, unit: "ช้อนโต๊ะ", icon: "fa-bottle-droplet" },
+                    { name: "น้ำมะนาวคั้นสด", amount: 2, unit: "ช้อนโต๊ะ", icon: "fa-lemon" },
+                    { name: "น้ำตาลทราย", amount: 0.5, unit: "ช้อนชา", icon: "fa-cube" },
+                    { name: "น้ำอุ่น / น้ำต้มสุก", amount: 1, unit: "ช้อนชา", icon: "fa-droplet" }
+                ],
+                steps: [
+                    { title: "1. เตรียมพริกและกระเทียม", detail: "ล้างพริกขี้หนูสวนและกระเทียมไทยให้สะอาด ซับน้ำด้วยกระดาษอเนกประสงค์ให้แห้งสนิท เพื่อป้องกันความชื้นทำให้พริกดำ" },
+                    { title: "2. ซอยวัตถุดิบ", detail: "ซอยพริกขี้หนูเป็นแว่น тонๆ ซอยกระเทียมบางๆ ตามแนวยาว" },
+                    { title: "3. เคล็ดลับพริกสีสด (คลุกมะนาว)", detail: "นำพริกและกระเทียมซอยใส่ถ้วย คลุกด้วยน้ำมะนาว 1 ช้อนโต๊ะทันที ทิ้งไว้ 1-2 นาที ให้กรดซิตริกเคลือบผิวพริก" },
+                    { title: "4. ปรุงรสหวานละลายน้ำ", detail: "เติมน้ำตาลทรายและน้ำอุ่นลงไป คนจนเกล็ดน้ำตาลทรายละลายหมด" },
+                    { title: "5. ผสมน้ำปลาเสร็จสมบูรณ์", detail: "เติมน้ำปลาแท้ลงไปเป็นลำดับสุดท้าย คนให้เข้ากัน ชิมรสตามชอบ พร้อมเสิร์ฟคู่ข้าวผัดหรือไข่ดาว" }
+                ]
+            },
+            {
+                id: 1,
+                title: "พริกน้ำปลาสูตรเข้มข้นหอมทรงเครื่อง",
+                subtitle: "รสจัดจ้าน นัวครบรส หอมกลิ่นหอมแดง",
+                description: "สูตรนี้เพิ่มมิติของกลิ่นหอมและรสสัมผัสจากหอมแดง น้ำตาลปี๊บ และผิวมะนาว เหมาะสำหรับกินคู่กับไข่ดาว ข้าวผัด หรือเนื้อสัตว์ทอด",
+                image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80",
+                prepTime: "8 นาที",
+                tasteProfile: "นัวเข้มข้น หวานละมุน เผ็ดฉุนหอมเครื่อง",
+                ingredients: [
+                    { name: "พริกขี้หนูสวนซอย", amount: 15, unit: "เม็ด", icon: "fa-pepper-hot" },
+                    { name: "พริกแดงจินดาซอยละเอียด", amount: 5, unit: "เม็ด", icon: "fa-fire" },
+                    { name: "กระเทียมสับละเอียด", amount: 1, unit: "ช้อนโต๊ะ", icon: "fa-seedling" },
+                    { name: "หอมแดงซอยบาง", amount: 2, unit: "หัว", icon: "fa-stroopwafel" },
+                    { name: "น้ำปลาแท้", amount: 4, unit: "ช้อนโต๊ะ", icon: "fa-bottle-droplet" },
+                    { name: "น้ำมะนาวสด", amount: 2, unit: "ช้อนโต๊ะ", icon: "fa-lemon" },
+                    { name: "น้ำตาลปี๊บ / น้ำตาลมะพร้าว", amount: 1, unit: "ช้อนชา", icon: "fa-bowl-rice" },
+                    { name: "ผิวส้มซ่า / ผิวมะนาวซอย", amount: 0.2, unit: "ช้อนชา", icon: "fa-leaf" }
+                ],
+                steps: [
+                    { title: "1. ละลายน้ำตาลปี๊บ", detail: "ผสมน้ำตาลปี๊บกับน้ำมะนาวและน้ำปลาในถ้วยผสม ใช้ช้อนบี้จนน้ำตาลปี๊บละลายเนียนเป็นเนื้อเดียวกัน" },
+                    { title: "2. เตรียมเครื่องซอย", detail: "ซอยพริกขี้หนู พริกแดงจินดา กระเทียม และหอมแดงเป็นแว่นบางๆ" },
+                    { title: "3. ผสมเครื่องทรงเครื่อง", detail: "ใส่พริก กระเทียม และหอมแดงซอยลงในส่วนผสมน้ำปลาที่เตรียมไว้" },
+                    { title: "4. ดึงกลิ่นหอมและพักรส", detail: "โรยผิวมะนาวซอยละเอียดเล็กน้อย คนให้เข้ากัน พักทิ้งไว้ 5-10 นาที เพื่อให้ความหวานและความหอมของหอมแดงซึมออกมา" }
+                ]
+            },
+            {
+                id: 2,
+                title: "พริกน้ำปลาสูตรโบราณ",
+                subtitle: "โขลกละเอียด รสเข้าเนื้อ หอมฉุน",
+                description: "การโขลกเบาๆ แทนการซอย ทำให้น้ำมันหอมระเหยจากพริกและกระเทียมออกมาผสมกับน้ำปลา ได้น้ำปลาพริกขุ่นเล็กน้อย รสชาติซึมเข้าเนื้อดีเยี่ยม",
+                image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80",
+                prepTime: "7 นาที",
+                tasteProfile: "เผ็ดจัดจ้าน หอมฉุนพริกกระเทียมโขลก",
+                ingredients: [
+                    { name: "พริกขี้หนูสวนสด", amount: 20, unit: "เม็ด", icon: "fa-pepper-hot" },
+                    { name: "กระเทียมไทยแกะเปลือก", amount: 1.5, unit: "ช้อนโต๊ะ", icon: "fa-seedling" },
+                    { name: "น้ำปลาแท้", amount: 5, unit: "ช้อนโต๊ะ", icon: "fa-bottle-droplet" },
+                    { name: "น้ำมะนาวคั้นสด", amount: 2.5, unit: "ช้อนโต๊ะ", icon: "fa-lemon" },
+                    { name: "น้ำตาลทรายแดง / มะพร้าว", amount: 1, unit: "ช้อนชา", icon: "fa-cube" }
+                ],
+                steps: [
+                    { title: "1. โขลกบุบพอแตก", detail: "ใส่พริกขี้หนูและกระเทียมไทยลงในครก โขลกเบาๆ พอบุบ (เอาน้ำมันพริกและกระเทียมออกมา ไม่ต้องละเอียดถึงขั้นเป็นน้ำพริก)" },
+                    { title: "2. ปรุงรสในครก", detail: "ใส่น้ำตาลทรายแดงหรือน้ำตาลมะพร้าวลงไป ใช้สากบดวนให้น้ำตาลละลายผสมกับพริกกระเทียม" },
+                    { title: "3. เติมมะนาวและน้ำปลา", detail: "บีบน้ำมะนาวและเทน้ำปลาลงในครก ใช้ทัพพีหรือสากคนส่วนผสมให้เข้ากันดี" },
+                    { title: "4. จัดเสิร์ฟ", detail: "ตักใส่ถ้วย น้ำปลาจะมีลักษณะขุ่นเล็กน้อยจากน้ำมันพริกธรรมชาติ พร้อมรสสัมผัสที่ซึมเข้าเนื้อดีเยี่ยม" }
+                ]
+            }
+        ];
+
+        let activeRecipeIndex = 0;
+        let portionMultiplier = 1;
+
+        // Initialize App
+        window.onload = function() {
+            renderRecipeDetails(activeRecipeIndex);
+            updatePortion(1);
+        };
+
+        // Switch Active Recipe
+        function switchRecipe(index) {
+            activeRecipeIndex = index;
+            
+            // Update Tab Styling
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.className = "tab-btn active-tab px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold transition-all flex items-center justify-center space-x-2";
+                } else {
+                    tab.className = "tab-btn glass-card hover:text-amber-400 px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-slate-300 transition-all flex items-center justify-center space-x-2";
+                }
+            });
+
+            renderRecipeDetails(index);
+            updatePortion(portionMultiplier);
+        }
+
+        // Render Active Recipe HTML
+        function renderRecipeDetails(index) {
+            const recipe = recipesData[index];
+            const container = document.getElementById('recipe-display-container');
+
+            let ingredientsListHTML = '';
+            recipe.ingredients.forEach((ing, i) => {
+                ingredientsListHTML += `
+                    <li class="flex items-center justify-between p-2.5 rounded-lg bg-slate-800/40 border border-slate-700/40">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid ${ing.icon} text-amber-400 w-5"></i>
+                            <span class="text-sm text-slate-200">${ing.name}</span>
+                        </div>
+                        <span class="text-sm font-semibold text-amber-300">${ing.amount} ${ing.unit}</span>
+                    </li>
+                `;
+            });
+
+            let stepsHTML = '';
+            recipe.steps.forEach((step, i) => {
+                stepsHTML += `
+                    <div class="glass-card p-4 rounded-xl border border-slate-800 hover:border-amber-500/30 transition-all">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">
+                                ${i + 1}
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-100 text-sm sm:text-base mb-1">${step.title}</h4>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${step.detail}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = `
+                <!-- Left: Recipe Info & Ingredients List -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <div class="flex items-center space-x-2 text-xs font-semibold text-amber-400 mb-2">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>ใช้เวลาเตรียม: ${recipe.prepTime}</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-1">${recipe.title}</h3>
+                        <p class="text-amber-400/90 text-xs font-medium mb-3">${recipe.subtitle}</p>
+                        <p class="text-slate-300 text-sm leading-relaxed">${recipe.description}</p>
+                    </div>
+
+                    <!-- Taste Profile Pill -->
+                    <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center space-x-3">
+                        <i class="fa-solid fa-utensils text-amber-400 text-lg"></i>
+                        <div>
+                            <span class="text-xs text-slate-400 block">เอกลักษณ์รสชาติ:</span>
+                            <span class="text-xs font-semibold text-amber-200">${recipe.tasteProfile}</span>
+                        </div>
+                    </div>
+
+                    <!-- Ingredient Checklist Card -->
+                    <div>
+                        <h4 class="text-sm font-bold text-white mb-3 flex items-center">
+                            <i class="fa-solid fa-list-check text-amber-400 mr-2"></i>
+                            ส่วนผสมมาตรฐาน (สำหรับ 1 ถ้วย)
+                        </h4>
+                        <ul class="space-y-2">
+                            ${ingredientsListHTML}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right: Step-by-Step Instructions -->
+                <div class="lg:col-span-7 space-y-4">
+                    <h3 class="text-lg font-bold text-white mb-2 flex items-center">
+                        <i class="fa-solid fa-list-ol text-chili-500 mr-2"></i>
+                        ขั้นตอนการทำอย่างละเอียด
+                    </h3>
+                    <div class="space-y-3">
+                        ${stepsHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Portion Scaler Logic
+        function updatePortion(val) {
+            portionMultiplier = parseFloat(val);
+            document.getElementById('portion-count-label').innerText = `${val} ถ้วย`;
+
+            const currentRecipe = recipesData[activeRecipeIndex];
+            document.getElementById('selected-recipe-name').innerText = currentRecipe.title;
+
+            const scaledContainer = document.getElementById('scaled-ingredients-list');
+            let scaledHTML = '';
+
+            currentRecipe.ingredients.forEach(ing => {
+                const scaledAmount = (ing.amount * portionMultiplier).toFixed(ing.amount % 1 === 0 ? 0 : 1);
+                scaledHTML += `
+                    <li class="flex justify-between items-center border-b border-slate-800 pb-1.5">
+                        <span class="text-slate-300">${ing.name}</span>
+                        <span class="font-bold text-amber-400">${scaledAmount} ${ing.unit}</span>
+                    </li>
+                `;
+            });
+
+            scaledContainer.innerHTML = scaledHTML;
+        }
+
+        // Smooth Scroll Helper
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if(el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
